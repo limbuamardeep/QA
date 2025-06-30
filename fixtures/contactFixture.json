@@ -1,0 +1,25 @@
+{
+    
+    "validUser":{
+        "id": "amardeeplimbu10@gmail.com",
+        "password": "pandey1"
+    },
+    "invalidUser":{
+        "id": "invalidUser",
+        "password": "testPassword"
+    },
+
+    "contact": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "birthDate": "1990-01-01",
+        "phone": "1234567890",
+        "street1": "123 Main St",
+        "street2": "Apt 4B",
+        "city": "Springfield",  
+        "state": "IL"
+    },
+    "contactEdit": {
+        "firstName": "John"
+    }
+}
