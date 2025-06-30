@@ -1,23 +1,36 @@
-import {test, expect} from '@playwright/test';
-import {LoginPage} from '../page_object/login.po.js';
-const testData = require('../fixtures/loginFixture.json');
+import { test, expect} from '@playwright/test';
+import { LoginPage } from '../objects/login.po';
+const testData = require('../fixtures/loginFixture.json')
 
-test.beforeEach(async ({ page }) => {
-    await page.goto('https://thinking-tester-contact-list.herokuapp.com/');
-});
-test.describe('Valid login tests', () => {
-    test('Login using valid credentials', async ({ page }) => {
+test.beforeEach(async ({page}) => {
+  await page.goto('/login');
+})
 
-        const login= new LoginPage(page);
-        await login.login(testData.validUser.id,testData.validUser.password);
-        await login.verifyValidLogin();
-    });
-    
-});
-test.describe('Invalid login tests',()=>{
-    test("Login using invalid credentials",async({page})=>{
-        const login=new LoginPage(page);
-        await login.login(testData.invalidUser.id,testData.invalidUser.password);
-        await login.verifyInvalidLogin();
-    })
+test.describe ('Valid login tests', () => {
+  test('Login using valid username and password', async ({page}) => {
+    const login = new LoginPage (page);
+    await login.login(testData.validUser.userName, testData.validUser.password);
+    await login.verifyValidLogin();
+  });
+})
+
+test.describe ('Invalid login tests', () => {
+  test('Login using invalid username and valid password', async ({page}) => {
+    const login = new LoginPage (page);
+    await login.login(testData.invalidUser.userName, testData.validUser.password);
+    await login.verifyInvalidUsername();
+  });
+
+  test('Login using valid username and invalid password', async ({page}) => {
+    const login = new LoginPage (page);
+    await login.login(testData.validUser.userName, testData.invalidUser.password);
+    await login.verifyInvalidPassword();
+  });
+})
+
+test.describe ('Redirect tests', () => {
+  test('Go to register page', async ({page}) => {
+    const login = new LoginPage (page);
+    await login.verifyRegisterRedirect();
+  });
 })

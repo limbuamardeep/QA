@@ -1,10 +1,10 @@
 {
-    "validUser":{
-        "id": "amardeeplimbu10@gmail.com",
-        "password": "pandey1"
-    },
-    "invalidUser":{
-        "id": "invalidUser",
-        "password": "testPassword"
-    }
+  "validUser": {
+    "userName": "uttu",
+    "password": "uttu" 
+  },
+  "invalidUser": {
+    "userName": "hsdkjhsadj",
+    "password": "dsadsauttu" 
+  }
 }
